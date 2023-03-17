@@ -16,3 +16,32 @@ main {
   width: 100vw;
   background-color: gray;
 }
+
+/* Sort of like a table that will contain all Champion cards, full size it will contain up to 3 champion cards, but it can be flexed */
+.champions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: gray;
+}
+
+/* TODO: Finish the css for both of these elements */
+.champion-card {
+}
+
+.champion-card-image {
+
+}
+
+/* .go {
+  display: flexbox;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 500px;
+  background-color: gray; 
+} */

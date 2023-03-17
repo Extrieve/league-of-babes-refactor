@@ -10,11 +10,18 @@ class Home extends React.Component {
         <p className="home-description">
           Find out who's your favorite Babe across Sumonner's Rift 😳
         </p>
-        <a href="/match">
-          <button className="home-button">
-            Find your Babe
-          </button>
-        </a>
+        <div className='go'>
+          <a href="/match">
+            <button className="home-button">
+              Find your Babe
+            </button>  
+          </a>
+          <a href="/champions">
+            <button className="home-button">
+              Explore Babes
+            </button>
+          </a>
+        </div>
       </div>
     );
   }

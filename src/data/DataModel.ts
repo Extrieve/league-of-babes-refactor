@@ -12,5 +12,6 @@ export default interface BoardEntry {
     name: string;
     imageUrl: string;
     votes: number;
+    blurb: string;
     tags: string[];
 }
