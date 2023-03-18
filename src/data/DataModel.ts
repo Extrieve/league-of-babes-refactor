@@ -7,11 +7,11 @@ export default interface Champion {
     tags: string[];
 }
 
-export default interface BoardEntry {
-    id: string;
-    name: string;
-    imageUrl: string;
-    votes: number;
-    blurb: string;
-    tags: string[];
-}
+// export default interface BoardEntry {
+//     id: string;
+//     name: string;
+//     imageUrl: string;
+//     votes: number;
+//     blurb: string;
+//     tags: string[];
+// }
