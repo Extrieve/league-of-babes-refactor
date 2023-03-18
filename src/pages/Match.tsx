@@ -4,7 +4,7 @@ class Match extends React.Component {
   render() {
     return (
       <div>
-        <h2>Match</h2>
+        <h1>Match</h1>
       </div>
     );
   }

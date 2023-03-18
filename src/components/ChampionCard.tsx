@@ -3,6 +3,7 @@ import React from "react";
 interface ChampionCardProps {
   name: string;
   image: string;
+  id: string;
 }
 
 class ChampionCard extends React.Component<ChampionCardProps> {
