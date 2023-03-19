@@ -5,10 +5,12 @@ import Match from './pages/Match'
 import Leaderboard from './pages/Leaderboard'
 import NotFound from './pages/NotFound'
 import Champions from './pages/Champions'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <main>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/champions" element={<Champions />} />
