@@ -36,6 +36,7 @@ class Champions extends React.Component<any, State> {
                 name={champion.name}
                 id={champion.id}
                 image={champion.imageUrl}
+                blurb={champion.blurb}
               />
             );
           })}
