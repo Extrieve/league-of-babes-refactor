@@ -54,7 +54,7 @@ class Match extends React.Component<any, MatchSate> {
               image={champion1?.imageUrl || ''}
               id={champion1?.id || ''}
               blurb={champion1?.blurb || ''}
-              cardSize={24}
+              cardSize={56}
             />
             <div>
               <button onClick={() => this.setState({ votes1: votes1 + 1 })}>Vote</button>
@@ -67,7 +67,7 @@ class Match extends React.Component<any, MatchSate> {
               image={champion2?.imageUrl || ''}
               id={champion2?.id || ''}
               blurb={champion2?.blurb || ''}
-              cardSize={24}
+              cardSize={56}
             />
             <div>
               <button onClick={() => this.setState({ votes2: votes2 + 1 })}>Vote</button>
