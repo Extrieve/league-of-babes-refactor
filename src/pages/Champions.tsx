@@ -37,6 +37,7 @@ class Champions extends React.Component<any, State> {
                 id={champion.id}
                 image={champion.imageUrl}
                 blurb={champion.blurb}
+                cardSize={24}
               />
             );
           })}

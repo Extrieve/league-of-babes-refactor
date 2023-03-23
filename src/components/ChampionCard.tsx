@@ -5,6 +5,7 @@ interface ChampionCardProps {
   image: string;
   id: string;
   blurb: string;
+  cardSize: number;
 }
 
 class ChampionCard extends React.Component<ChampionCardProps> {
@@ -15,7 +16,7 @@ class ChampionCard extends React.Component<ChampionCardProps> {
 
   render() {
     return (
-      <div className="card" style={{ width: "24rem" }}>
+      <div className="card" style={{ width: `${24}rem` }}>
         <img src={this.props.image} className="card-img-top" alt={this.props.name} />
         <div className="card-body card-item">
           <h5 className="card-title">{this.props.name}</h5>
