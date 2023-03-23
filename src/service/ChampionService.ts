@@ -27,7 +27,7 @@ export const getAllChampions = async (): Promise<any> => {
     return response;
 }
 
-const getChampionById = async (id: string) => {
+export const getChampionById = async (id: string) => {
     const response = await axios.get(external_api)
     .then(response => {
         return response.data.data[id];
