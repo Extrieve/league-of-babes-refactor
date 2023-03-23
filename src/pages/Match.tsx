@@ -1,6 +1,7 @@
 import React from "react";
 import Champion from "../data/DataModel";
 import { getAllChampions } from "../service/ChampionService";
+import ChampionCard from "../components/ChampionCard";
 
 interface MatchSate {
   champions: Champion[];
@@ -42,9 +43,38 @@ class Match extends React.Component<any, MatchSate> {
   }
 
   render() {
+    const { champion1, champion2, votes1, votes2 } = this.state;
     return (
       <div>
         <h1>Match</h1>
+        <div className="row">
+          <div className="col">
+            <ChampionCard
+              name={champion1?.name || ''}
+              image={champion1?.imageUrl || ''}
+              id={champion1?.id || ''}
+              blurb={champion1?.blurb || ''}
+              cardSize={24}
+            />
+            <div>
+              <button onClick={() => this.setState({ votes1: votes1 + 1 })}>Vote</button>
+              <p>Votes: {votes1}</p>
+            </div>
+          </div>
+          <div className="col">
+            <ChampionCard
+              name={champion2?.name || ''}
+              image={champion2?.imageUrl || ''}
+              id={champion2?.id || ''}
+              blurb={champion2?.blurb || ''}
+              cardSize={24}
+            />
+            <div>
+              <button onClick={() => this.setState({ votes2: votes2 + 1 })}>Vote</button>
+              <p>Votes: {votes2}</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
