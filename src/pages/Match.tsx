@@ -9,6 +9,7 @@ interface MatchSate {
   champion2: Champion;
   votes1: number;
   votes2: number;
+  winner?: Champion;
 }
 
 class Match extends React.Component<any, MatchSate> {
@@ -56,10 +57,6 @@ class Match extends React.Component<any, MatchSate> {
     });
   }
 
-  // filterOutChampion(champion: Champion) {
-  //   return this.state.champions.filter((c: Champion) => c.id !== champion.id);
-  // }
-
   handleVote(champion: Champion) {
     if (champion.id === this.state.champion1?.id) {
       this.setState({ votes1: this.state.votes1 + 1, votes2: 0, champion2: this.state.champions[0] });
@@ -68,6 +65,15 @@ class Match extends React.Component<any, MatchSate> {
       this.setState({ votes2: this.state.votes2 + 1, votes1: 0, champion1: this.state.champions[0] });
       this.state.champions.shift();
     }
+
+    if (this.state.votes1 > 3 || (this.state.votes1 > this.state.votes2 && this.state.champions.length === 0)) {
+      this.setState({ winner: this.state.champion1 });
+      alert(this.state.champion1.name + " wins!");
+    } else if (this.state.votes2 > 3 || (this.state.votes2 > this.state.votes1 && this.state.champions.length === 0)) {
+      this.setState({ winner: this.state.champion2 });
+      alert(this.state.champion2.name + " wins!");
+    }
+      
   }
 
   render() {
