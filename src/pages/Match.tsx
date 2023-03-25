@@ -5,8 +5,8 @@ import ChampionCard from "../components/ChampionCard";
 
 interface MatchSate {
   champions: Champion[];
-  champion1: Champion | null;
-  champion2: Champion | null;
+  champion1: Champion;
+  champion2: Champion;
   votes1: number;
   votes2: number;
 }
@@ -17,8 +17,22 @@ class Match extends React.Component<any, MatchSate> {
     super(props);
     this.state = {
       champions: [],
-      champion1: null,
-      champion2: null,
+      champion1: {
+        id: '',
+        name: '',
+        imageUrl: '',
+        blurb: '',
+        title: "",
+        tags: []
+      },
+      champion2: {
+        id: '',
+        name: '',
+        imageUrl: '',
+        blurb: '',
+        title: "",
+        tags: []
+      },
       votes1: 0,
       votes2: 0
     };
@@ -35,43 +49,55 @@ class Match extends React.Component<any, MatchSate> {
     getAllChampions().then((champions: Champion[]) => {
       this.shuffleInPlace(champions);
       this.setState({
-        champions: champions,
         champion1: champions[0],
-        champion2: champions[1]
+        champion2: champions[1],
+        champions: champions.slice(2),
       });
     });
   }
 
+  filterOutChampion(champion: Champion) {
+    return this.state.champions.filter((c: Champion) => c.id !== champion.id);
+  }
+
+  handleVote(champion: Champion) {
+    if (champion.id === this.state.champion1?.id) {
+      this.setState({ votes1: this.state.votes1 + 1, votes2: 0, champions: this.filterOutChampion(this.state.champion2), champion2: this.state.champions[0] });
+    } else {
+      this.setState({ votes1: 0, votes2: this.state.votes2 + 1, champions: this.filterOutChampion(this.state.champion1), champion1: this.state.champions[0] });
+    }
+  }
+
   render() {
-    const { champion1, champion2, votes1, votes2 } = this.state;
+    console.log(this.state.champion2);
     return (
       <div>
         <h1>Match</h1>
         <div className="row">
           <div className="col">
             <ChampionCard
-              name={champion1?.name || ''}
-              image={champion1?.imageUrl || ''}
-              id={champion1?.id || ''}
-              blurb={champion1?.blurb || ''}
+              name={this.state.champion1?.name || ''}
+              image={this.state.champion1?.imageUrl || ''}
+              id={this.state.champion1?.id || ''}
+              blurb={this.state.champion1?.blurb || ''}
               cardSize={56}
             />
             <div>
-              <button onClick={() => this.setState({ votes1: votes1 + 1 })}>Vote</button>
-              <p>Votes: {votes1}</p>
+              <button onClick={() => this.handleVote(this.state.champion1)}>Vote</button>
+              <p>Votes: {this.state.votes1}</p>
             </div>
           </div>
           <div className="col">
             <ChampionCard
-              name={champion2?.name || ''}
-              image={champion2?.imageUrl || ''}
-              id={champion2?.id || ''}
-              blurb={champion2?.blurb || ''}
+              name={this.state.champion2?.name || ''}
+              image={this.state.champion2?.imageUrl || ''}
+              id={this.state.champion2?.id || ''}
+              blurb={this.state.champion2?.blurb || ''}
               cardSize={56}
             />
             <div>
-              <button onClick={() => this.setState({ votes2: votes2 + 1 })}>Vote</button>
-              <p>Votes: {votes2}</p>
+              <button onClick={() => this.handleVote(this.state.champion2)}>Vote</button>
+              <p>Votes: {this.state.votes2}</p>
             </div>
           </div>
         </div>
