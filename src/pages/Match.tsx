@@ -1,5 +1,5 @@
 import React from "react";
-import Champion from "../data/DataModel";
+import Champion from "../data/iChampion";
 import { getAllChampions } from "../service/ChampionService";
 import ChampionCard from "../components/ChampionCard";
 

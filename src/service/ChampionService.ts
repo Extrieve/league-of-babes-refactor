@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Champion from '../data/DataModel';
+import Champion from '../data/iChampion';
 
 const external_api = 'http://ddragon.leagueoflegends.com/cdn/10.24.1/data/en_US/champion.json';
 const internal_api = 'http://localhost:8080/api/v1/';
