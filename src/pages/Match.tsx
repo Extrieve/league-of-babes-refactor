@@ -56,15 +56,17 @@ class Match extends React.Component<any, MatchSate> {
     });
   }
 
-  filterOutChampion(champion: Champion) {
-    return this.state.champions.filter((c: Champion) => c.id !== champion.id);
-  }
+  // filterOutChampion(champion: Champion) {
+  //   return this.state.champions.filter((c: Champion) => c.id !== champion.id);
+  // }
 
   handleVote(champion: Champion) {
     if (champion.id === this.state.champion1?.id) {
-      this.setState({ votes1: this.state.votes1 + 1, votes2: 0, champions: this.filterOutChampion(this.state.champion2), champion2: this.state.champions[0] });
+      this.setState({ votes1: this.state.votes1 + 1, votes2: 0, champion2: this.state.champions[0] });
+      this.state.champions.shift();
     } else {
-      this.setState({ votes1: 0, votes2: this.state.votes2 + 1, champions: this.filterOutChampion(this.state.champion1), champion1: this.state.champions[0] });
+      this.setState({ votes2: this.state.votes2 + 1, votes1: 0, champion1: this.state.champions[0] });
+      this.state.champions.shift();
     }
   }
 
