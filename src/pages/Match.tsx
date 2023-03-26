@@ -46,8 +46,10 @@ class Match extends React.Component<any, MatchSate> {
     }
   }
 
-  componentDidMount() {
-    getAllChampions().then((champions: Champion[]) => {
+  async componentDidMount() {
+    const response = await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then((response) => response.json())
+    const version = response[0];
+    getAllChampions(version).then((champions: Champion[]) => {
       this.shuffleInPlace(champions);
       this.setState({
         champion1: champions[0],

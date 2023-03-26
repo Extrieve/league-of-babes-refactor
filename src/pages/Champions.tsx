@@ -7,13 +7,9 @@ interface State {
   champions: Champion[];
 }
 
-interface ChampionsProps {
-  version: Promise<string>;
-}
+class Champions extends React.Component<any, State> {
 
-class Champions extends React.Component<ChampionsProps, State> {
-
-  constructor(props: ChampionsProps) {
+  constructor(props: any) {
     super(props);
     this.state = {
       champions: [],
@@ -21,7 +17,10 @@ class Champions extends React.Component<ChampionsProps, State> {
   }
 
   async componentDidMount() {
-    getAllChampions(await this.props.version).then((champions: Champion[]) => {
+    const response = await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then((response) => response.json())
+    const version = response[0];
+    
+    getAllChampions(version).then((champions: Champion[]) => {
       this.setState({
         champions: champions,
       });
