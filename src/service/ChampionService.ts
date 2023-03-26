@@ -1,10 +1,12 @@
 import axios from 'axios';
 import Champion from '../data/iChampion';
 
-const external_api = 'http://ddragon.leagueoflegends.com/cdn/10.24.1/data/en_US/champion.json';
+
 const internal_api = 'http://localhost:8080/api/v1/';
 
-export const getAllChampions = async (): Promise<any> => {
+export const getAllChampions = async (version: string): Promise<any> => {
+    const external_api = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`;
+    console.log(external_api);
     const response = await axios.get(external_api)
     .then(response => {
         const champions: Champion[] = [];
@@ -27,7 +29,8 @@ export const getAllChampions = async (): Promise<any> => {
     return response;
 }
 
-export const getChampionById = async (id: string) => {
+export const getChampionById = async (id: string, version: string) => {
+    const external_api = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`;
     const response = await axios.get(external_api)
     .then(response => {
         return response.data.data[id];

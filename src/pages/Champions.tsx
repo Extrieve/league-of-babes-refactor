@@ -7,19 +7,23 @@ interface State {
   champions: Champion[];
 }
 
-class Champions extends React.Component<any, State> {
+interface ChampionsProps {
+  version: Promise<string>;
+}
 
-  constructor(props: any) {
+class Champions extends React.Component<ChampionsProps, State> {
+
+  constructor(props: ChampionsProps) {
     super(props);
     this.state = {
-      champions: []
+      champions: [],
     };
   }
 
-  componentDidMount() {
-    getAllChampions().then((champions: Champion[]) => {
+  async componentDidMount() {
+    getAllChampions(await this.props.version).then((champions: Champion[]) => {
       this.setState({
-        champions: champions
+        champions: champions,
       });
     });
   }
