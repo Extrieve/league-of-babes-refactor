@@ -31,12 +31,7 @@ export const getAllChampions = async (version: string): Promise<any> => {
 
 export const getChampionById = async (id: string, version: string) => {
     const external_api = `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`;
-    const response = await axios.get(external_api)
-    .then(response => {
-        return response.data.data[id];
-    })
-    .catch(error => {
-        console.log(error);
-    });
-    return response;
+    const response = await axios.get(external_api);
+    const champion = response.data.data[id];
+    return champion;
 }
