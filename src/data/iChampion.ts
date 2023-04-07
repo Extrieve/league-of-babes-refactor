@@ -4,5 +4,5 @@ export default interface Champion {
     title: string;
     blurb: string;
     imageUrl: string; // full image url is: https://ddragon.leagueoflegends.com/cdn/img/champion/splash/{id}_0.jpg
-    tags: string[];
+    tags?: string[];
 }
