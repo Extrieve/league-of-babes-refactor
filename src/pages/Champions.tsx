@@ -34,14 +34,17 @@ class Champions extends React.Component<any, State> {
         <div className="champions-list">
           {this.state.champions.map((champion: Champion) => {
             return (
-              <ChampionCard
-                key={champion.id}
-                name={champion.name}
-                id={champion.id}
-                image={champion.imageUrl}
-                blurb={champion.blurb}
-                cardSize={24}
-              />
+              <a href={`champions/${champion.name}`}>
+                <ChampionCard
+                  key={champion.id}
+                  name={champion.name}
+                  title={champion.title}
+                  id={champion.id}
+                  image={champion.imageUrl}
+                  blurb={champion.blurb}
+                  cardSize={24}
+                />
+              </a>
             );
           })}
         </div>
