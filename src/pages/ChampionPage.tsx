@@ -2,6 +2,7 @@ import Champion from "../data/iChampion";
 import { getChampionById } from "../service/ChampionService";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ChampionCard from "../components/ChampionCard";
 
 interface State {
   champion?: Champion;
@@ -22,15 +23,20 @@ const ChampionPage: React.FC = () => {
     fetchChampionData();
   }, [id]);
 
-  console.log("LOGGING CHAMPION");
-
   return (
-    <div>
-      <h1>Champion</h1>
+    <div className="home">
       {champion.champion ? (
-        <div>
-          <h2>{champion.champion.name}</h2>
-          {/* <p>{champion.champion.description}</p> */}
+        <div className="center-text">
+          <h1>{champion.champion.name}</h1>
+          <ChampionCard
+            key={champion.champion.id}
+            name={champion.champion.name}
+            title={champion.champion.title}
+            id={champion.champion.id}
+            image={champion.champion.imageUrl}
+            blurb={champion.champion.blurb}
+            cardSize={72}
+          />
         </div>
       ) : (
         <p>Loading champion data...</p>
