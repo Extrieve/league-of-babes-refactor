@@ -32,21 +32,19 @@ class Champions extends React.Component<any, State> {
       <div className="champions">
         <h1>Champions</h1>
         <div className="champions-list">
-          {this.state.champions.map((champion: Champion) => {
-            return (
-              <a href={`champions/${champion.name}`}>
-                <ChampionCard
-                  key={champion.id}
-                  name={champion.name}
-                  title={champion.title}
-                  id={champion.id}
-                  image={champion.imageUrl}
-                  blurb={champion.blurb}
-                  cardSize={24}
-                />
-              </a>
-            );
-          })}
+          {this.state.champions.map((champion: Champion) => (
+            <a href={`/champions/${champion.name}`}>
+              <ChampionCard
+                key={champion.id}
+                name={champion.name}
+                title={champion.title}
+                id={champion.id}
+                image={champion.imageUrl}
+                blurb={champion.blurb}
+                cardSize={24}
+              />
+            </a>
+          ))}
         </div>
       </div>
     );
