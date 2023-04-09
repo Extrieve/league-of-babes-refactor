@@ -8,7 +8,7 @@ class Home extends React.Component {
           League of Babes
         </h1>
         <p className="home-description">
-          Find out who's your favorite Babe across Sumonner's Rift 😳
+          Find out who's your favorite Babe across Summoner's Rift 😳
         </p>
         <div className='go'>
           <a href="/match">
