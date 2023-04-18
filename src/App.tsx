@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound'
 import Champions from './pages/Champions'
 import Navbar from './components/Navbar'
 import ChampionPage from './pages/ChampionPage'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </main>
   );
 }
