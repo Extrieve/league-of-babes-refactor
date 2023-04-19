@@ -24,7 +24,7 @@ class Match extends React.Component<any, MatchSate> {
         imageUrl: '',
         blurb: '',
         title: "",
-        tags: []
+        tags: [],
       },
       champion2: {
         id: '',
@@ -49,6 +49,7 @@ class Match extends React.Component<any, MatchSate> {
   async componentDidMount() {
     const response = await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then((response) => response.json())
     const version = response[0];
+
     getAllChampions(version).then((champions: Champion[]) => {
       this.shuffleInPlace(champions);
       this.setState({
@@ -68,12 +69,12 @@ class Match extends React.Component<any, MatchSate> {
       this.state.champions.shift();
     }
 
-    if (this.state.votes1 > 3 || (this.state.votes1 > this.state.votes2 && this.state.champions.length === 0)) {
+    if (this.state.votes1 > 4 || (this.state.votes1 > this.state.votes2 && this.state.champions.length === 0)) {
       this.setState({ winner: this.state.champion1 });
-      alert(this.state.champion1.name + " wins!");
-    } else if (this.state.votes2 > 3 || (this.state.votes2 > this.state.votes1 && this.state.champions.length === 0)) {
+      alert('Winner: ' + this.state.champion1.name);
+    } else if (this.state.votes2 > 4 || (this.state.votes2 > this.state.votes1 && this.state.champions.length === 0)) {
       this.setState({ winner: this.state.champion2 });
-      alert(this.state.champion2.name + " wins!");
+      alert('Winner: ' + this.state.champion2.name);
     }
       
   }
@@ -82,11 +83,11 @@ class Match extends React.Component<any, MatchSate> {
     console.log(this.state.champion2);
     return (
       <div>
-        <h1>Match</h1>
         <div className="row">
           <div className="col">
             <ChampionCard
               name={this.state.champion1?.name || ''}
+              title={this.state.champion1?.title || ''}
               image={this.state.champion1?.imageUrl || ''}
               id={this.state.champion1?.id || ''}
               blurb={this.state.champion1?.blurb || ''}
@@ -100,6 +101,7 @@ class Match extends React.Component<any, MatchSate> {
           <div className="col">
             <ChampionCard
               name={this.state.champion2?.name || ''}
+              title={this.state.champion2?.title || ''}
               image={this.state.champion2?.imageUrl || ''}
               id={this.state.champion2?.id || ''}
               blurb={this.state.champion2?.blurb || ''}

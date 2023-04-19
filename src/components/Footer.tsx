@@ -5,7 +5,7 @@ class Footer extends React.Component {
     return (
       <div className="footer">
         <p>
-          Made with ❤️ by Extrieve
+          Made with ❤️ by   
           <a href="//github.com/extrieve" target="_blank">
             Nick
           </a>
