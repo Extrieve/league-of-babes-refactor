@@ -21,18 +21,20 @@ class Champions extends React.Component<any, State> {
     const version = response[0];
     
     getAllChampions(version).then((champions: Champion[]) => {
+      // delay to show loading
+      setTimeout(() => {
       this.setState({
         champions: champions,
       });
+      }, 1000);
     });
   }
 
   render() {
     return (
       <div className="champions">
-        <h1>Champions</h1>
         <div className="champions-list">
-          {this.state.champions.map((champion: Champion) => (
+          {this.state.champions[0] ? this.state.champions.map((champion: Champion) => (
             <a href={`/champions/${champion.name}`}>
               <ChampionCard
                 key={champion.id}
@@ -44,7 +46,7 @@ class Champions extends React.Component<any, State> {
                 cardSize={24}
               />
             </a>
-          ))}
+          )) : <h1>Loading champions...</h1>}
         </div>
       </div>
     );
