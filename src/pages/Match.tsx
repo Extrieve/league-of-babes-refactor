@@ -103,9 +103,10 @@ const Match: React.FC = () => {
             image={state.champion1.imageUrl || ''}
             id={state.champion1.id || ''}
             blurb={state.champion1.blurb || ''}
-            cardSize={24}
+            cardSize={55}
           />
-          <button className="btn btn-primary" onClick={() => handleVote(state.champion1)}>
+          <br />
+          <button className="home-button" onClick={() => handleVote(state.champion1)}>
             Vote
           </button>
         </div>
@@ -116,9 +117,10 @@ const Match: React.FC = () => {
             image={state.champion2.imageUrl || ''}
             id={state.champion2.id || ''}
             blurb={state.champion2.blurb || ''}
-            cardSize={24}
+            cardSize={55}
           />
-          <button className="btn btn-primary" onClick={() => handleVote(state.champion2)}>
+          <br />
+          <button className="home-button" onClick={() => handleVote(state.champion2)}>
             Vote
           </button>
         </div>
