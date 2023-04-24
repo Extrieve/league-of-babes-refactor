@@ -1,6 +1,6 @@
 import Champion from "../data/iChampion";
 import { getChampionById } from "../service/ChampionService";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ChampionCard from "../components/ChampionCard";
 
@@ -11,20 +11,24 @@ interface State {
 const ChampionPage: React.FC = () => {
   const [champion, setChampion] = useState<State>({ champion: undefined });
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+
+  const winner = new URLSearchParams(location.search).get('winner');
+  const match = new URLSearchParams(location.search).get('match');
 
   useEffect(() => {
     const fetchChampionData = async () => {
       const response = await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then((response) => response.json())
       const version = response[0];
-      console.log("Champion id: " + id);
       const championData = await getChampionById(id, version);
       setChampion({ champion: championData });
     };
     fetchChampionData();
+    console.log(id, winner);
   }, [id]);
-
   return (
     <div className="home">
+      {winner ? <h1>Match Winner ❤️</h1> : <></>} {/* conditional rendering of "winner" message */}
       {champion.champion ? (
         <div className="center-text">
           <h1>{champion.champion.name}</h1>
