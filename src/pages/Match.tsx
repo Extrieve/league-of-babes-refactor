@@ -86,10 +86,10 @@ const Match: React.FC = () => {
 
     if (state.votes1 > 4 || (state.votes1 > state.votes2 && state.champions.length === 0)) {
       setState((prevState) => ({ ...prevState, winner: prevState.champion1 }));
-      navigate(`/champions/${state.champion1.name}`);
+      navigate(`/champions/${state.champion1.name}?winner=true&match=1`);
     } else if (state.votes2 > 4 || (state.votes2 > state.votes1 && state.champions.length === 0)) {
       setState((prevState) => ({ ...prevState, winner: prevState.champion2 }));
-      navigate(`/champions/${state.champion2.name}`);
+      navigate(`/champions/${state.champion2.name}?winner=true&match=2`);
     }
   };
 
