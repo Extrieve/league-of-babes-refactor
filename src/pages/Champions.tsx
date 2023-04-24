@@ -35,7 +35,7 @@ class Champions extends React.Component<any, State> {
       <div className="champions">
         <div className="champions-list">
           {this.state.champions[0] ? this.state.champions.map((champion: Champion) => (
-            <a href={`/champions/${champion.name}`}>
+            <a href={`/champions/${champion.name}`} key={champion.name}>
               <ChampionCard
                 key={champion.id}
                 name={champion.name}
