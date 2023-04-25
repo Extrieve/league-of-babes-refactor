@@ -5,11 +5,10 @@ class Footer extends React.Component {
     return (
       <div className="footer">
         <p>
-          Made with ❤️ by   
-          <a href="//github.com/extrieve" target="_blank">
+          Made with ❤️ by
+          <span className="author">
             Nick
-          </a>
-          .
+          </span>
         </p>
       </div>
     );
