@@ -20,11 +20,12 @@ const ChampionPage: React.FC = () => {
     const fetchChampionData = async () => {
       const response = await fetch('https://ddragon.leagueoflegends.com/api/versions.json').then((response) => response.json())
       const version = response[0];
-      const championData = await getChampionById(id, version);
-      setChampion({ champion: championData });
+      if (id) { // Add this check to make sure id is defined
+        const championData = await getChampionById(id, version);
+        setChampion({ champion: championData });
+      }
     };
     fetchChampionData();
-    console.log(id, winner);
   }, [id]);
   return (
     <div className="home">
