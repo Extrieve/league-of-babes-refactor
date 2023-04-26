@@ -124,3 +124,51 @@ main {
 .footer a:hover {
   text-decoration: underline;
 }
+
+.champions {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.champions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  padding-top: 6rem; /* add padding to push cards down */
+}
+
+.champions-filter {
+  display: flex;
+  justify-content: center;
+  position: fixed; /* position fixed to keep it at the top of the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* set z-index to ensure it's above other content */
+  margin-bottom: 1rem;
+}
+
+.champions-filter label {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.champions-filter input {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #292b2f;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.champions-filter input:focus {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
